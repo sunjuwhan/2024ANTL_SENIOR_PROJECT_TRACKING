@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="63b5f1dc-4822-4e46-a1b7-a1934b76b7ca" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/test/sun/dorncontroller/drone_controller/drone_controller_datasender.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/sun/dorncontroller/drone_controller/drone_controller_datasender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/sun/dorncontroller/drone_controller/drone_controller_videostreamer.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/sun/dorncontroller/drone_controller/drone_controller_videostreamer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/sun/drone/view/constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/sun/drone/view/constant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2fUOcZC8hMINuqDsAIaEwskj5be" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ANTL/Desktop/GitHub/2024ANTL_SENIO_PROJECT"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ANTL\Desktop\GitHub\2024ANTL_SENIO_PROJECT\test\sun\dorncontroller\drone_controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ANTL\Desktop\GitHub\2024ANTL_SENIO_PROJECT\img" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="63b5f1dc-4822-4e46-a1b7-a1934b76b7ca" name="변경" comment="" />
+      <created>1713852269225</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713852269225</updated>
+    </task>
+    <servers />
+  </component>
+</project>
