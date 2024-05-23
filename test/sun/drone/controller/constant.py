@@ -1,10 +1,10 @@
 import platform
 import cv2
 
-PATH_TO_MODEL = "/home/pi/2024ANTL_SENIOR_PROJECT_Tracking/test/sun/drone/mobilenet_ssd/"
+PATH_TO_MODEL = "/home/pi/2024ANTL_SENIOR_PROJECT_TRACKING/test/sun/drone/mobilenet_ssd/"
 MODEL = "mobilenet_ssd_v2_coco_quant_postprocess.tflite"
 TPU_MODEL = "mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite"
-PATH_TO_LABEL = "/home/pi/2024ANTL_SENIOR_PROJECT_Tracking/test/sun/drone/mobilenet_ssd/coco_labels.txt"
+PATH_TO_LABEL = "/home/pi/2024ANTL_SENIOR_PROJECT_TRACKING/test/sun/drone/mobilenet_ssd/coco_labels.txt"
 
 
 EDGETPU = True
