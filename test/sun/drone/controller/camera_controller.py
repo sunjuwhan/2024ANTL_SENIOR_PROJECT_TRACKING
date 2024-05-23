@@ -64,7 +64,7 @@ class CameraController():
                 thread_fpv=threading.Thread(target=self.run_fpv_cam)
                 self.__model.set_end_flag(False)
                 thread_fpv.start()
-            elif self.__now_mode=="manual" and (recv_mode=="gps" or recv_mode=="tracker"):
+            elif self.__now_mode=="manual" and (recv_mode=="gps" or recv_mode=="tracking"):
                 self.__model.set_end_flag(True)
                 time.sleep(0.3)
                 print("swap camera") 

@@ -48,7 +48,6 @@ class class_Drone_Controller_VideoStreamer:
                 # 프레임 표시 시간 계산
                 except Exception as e:
                     print(e)
-
                 # 'q' 키를 누르면 종료
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     cv2.destroyAllWindows()

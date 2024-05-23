@@ -53,7 +53,7 @@ class class_drone_controller_datasender:
                         else: 
                             mode="land" 
                     else:  #switch 3 번이 꺼져있어그러면 다음 단게로 넘어갈수있어
-                        if self.info.switch3==True:
+                        if self.info.switch2==True:
                             mode="tracking"
                         else:
                             if self.info.switch4==True:

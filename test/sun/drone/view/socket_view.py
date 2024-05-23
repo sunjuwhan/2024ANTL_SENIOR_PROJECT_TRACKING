@@ -46,7 +46,7 @@ class SocketView():
                 for i in range(size_of_send):
                     self.video_socket.sendto(bytes([i]) +s[i*46080:(i+1) *46080], (IP_CONTROLLER, PORT_CONTROLLER))
             except Exception as e:
-                print(e)
+                pass
     def __data_recv(self):
         while True:
             try:
