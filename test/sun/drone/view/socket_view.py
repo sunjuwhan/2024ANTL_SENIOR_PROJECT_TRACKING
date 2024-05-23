@@ -37,7 +37,7 @@ class SocketView():
                 now_mode=self.__pilot_mode.get_data()[1]
                 size_of_send=0
 
-                if now_mode=="gps":
+                if now_mode=="gps" or now_mode=="tracking":
                     size_of_send=20
                 else:
                     size_of_send=5
