@@ -130,7 +130,6 @@ class tracker_model:
         self.__xmax=xmax *640
         self.__ymin=ymin *320
         self.__ymax=ymax *320
-        print("test : ",self.__xmin," ",self.__xmax," ",self.__ymin,"  ",self.__ymax)
         self.cal_distance()  #update가 되면 cal_distacne를 수행한다 
         
     def set_flag(self,flag) :
