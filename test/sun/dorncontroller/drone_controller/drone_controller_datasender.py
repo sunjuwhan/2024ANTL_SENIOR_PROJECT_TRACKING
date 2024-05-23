@@ -53,10 +53,13 @@ class class_drone_controller_datasender:
                         else: 
                             mode="land" 
                     else:  #switch 3 번이 꺼져있어그러면 다음 단게로 넘어갈수있어
-                        if self.info.switch4==True:
-                            mode="manual"
-                        elif self.info.switch4==False:
-                            mode="gps"
+                        if self.info.switch3==True:
+                            mode="tracking"
+                        else:
+                            if self.info.switch4==True:
+                                mode="manual"
+                            elif self.info.switch4==False:
+                                mode="gps"
             elif self.info.switch1==0:
                 mode="disarm"
             joystick_data = f"{self.info.joystick_Left_x} {self.info.joystick_Left_y} {self.info.joystick_Right_x} {self.info.joystick_Right_y} {mode}" 

@@ -22,25 +22,26 @@ class Drone:
                 print(f"-- Connected to drone!")
                 break
             
-        async for health in self.antl_drone.telemetry.health():
-            if health.is_global_position_ok and health.is_home_position_ok:
-                print("-- Global position state is good enough for flying.")
-                break
-        try:
-            await self.antl_drone.manual_control.set_manual_control_input
-            (float(0), float(0), float(0.5), float(0))
-            print("good")
+        #async for health in self.antl_drone.telemetry.health():
+        #    if health.is_global_position_ok and health.is_home_position_ok:
+        #        print("-- Global position state is good enough for flying.")
+        #        break
+        #try:
+        #    await self.antl_drone.manual_control.set_manual_control_input
+        #    (float(0), float(0), float(0.5), float(0))
+        #    print("good")
             
-        except Exception as e:
-            print(e)
+        #except Exception as e:
+        #    print(e)
             
             
-        print("Fetching amsl altitude at home location....")
-        async for terrain_info in self.antl_drone.telemetry.home():
-            absolute_altitude = terrain_info.absolute_altitude_m
-            break
+        #print("Fetching amsl altitude at home location....")
+        #async for terrain_info in self.antl_drone.telemetry.home():
+        #    absolute_altitude = terrain_info.absolute_altitude_m
+        #    break
         
-        self.flying_alt=absolute_altitude+6
+        #self.flying_alt=absolute_altitude+6
+        self.flying_alt=6
         print('======================self.flying alt')
         print(self.flying_alt)
         #print("-- Arming")
@@ -129,6 +130,7 @@ class tracker_model:
         self.__xmax=xmax *640
         self.__ymin=ymin *320
         self.__ymax=ymax *320
+        print("test : ",self.__xmin," ",self.__xmax," ",self.__ymin,"  ",self.__ymax)
         self.cal_distance()  #update가 되면 cal_distacne를 수행한다 
         
     def set_flag(self,flag) :
