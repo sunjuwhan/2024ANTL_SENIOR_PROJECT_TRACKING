@@ -43,18 +43,19 @@ class SocketView():
                     size_of_send=15
                 else:
                     size_of_send=4
-                _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),50])
+                _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),90])
                 
                 s=encoded_frame.tobytes()
-                packet_size = 65507 - 3  # UDP 패킷 최대 크기 (식별자 바이트를 위해 1 바이트 제외)
+                packet_size = 65507  # UDP 패킷 최대 크기 (식별자 바이트를 위해 1 바이트 제외)
                 num_packets = len(s) // packet_size + (1 if len(s) % packet_size != 0 else 0)
                 
 
                 for i in range(num_packets):
                     packet_data = s[i*packet_size:(i+1)*packet_size]
-                    packet = struct.pack("BH", i,frame_id) + packet_data
-                    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
-                frame_id=(frame_id+1) %65536
+                    self.video_socket.sendto(struct.pack("B",i)+packet_data ,(IP_CONTROLLER, PORT_CONTROLLER))
+                    #packet = struct.pack("B", i) + packet_data
+                    #self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
+                    time.sleep(0.001)
                 #for i in range(num_packets):
                 #    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
             except Exception as e:
