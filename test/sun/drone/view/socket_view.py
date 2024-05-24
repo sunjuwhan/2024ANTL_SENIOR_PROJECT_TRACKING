@@ -36,6 +36,8 @@ class SocketView():
         while True : 
             try:
                 frame=self.__video_model.get_send_frame()  #46081
+                cv2.imshow("send_img", frame)
+
                 now_mode=self.__pilot_mode.get_data()[1]
                 size_of_send=0
 
