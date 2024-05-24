@@ -5,8 +5,8 @@ import numpy as np
 # Picamera2 객체 생성
 picam2 = Picamera2()
 
-# 카메라 설정 구성
-config = picam2.create_preview_configuration()
+# 해상도를 640x480으로 설정하여 카메라 설정 구성
+config = picam2.create_preview_configuration(main={"size": (640, 480)})
 picam2.configure(config)
 
 # 카메라 시작
