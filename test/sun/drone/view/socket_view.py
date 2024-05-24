@@ -43,6 +43,7 @@ class SocketView():
                     size_of_send=15
                 else:
                     size_of_send=4
+                cv2.imshow("test",frame)
                 _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),90])
                 
                 s=encoded_frame.tobytes()
