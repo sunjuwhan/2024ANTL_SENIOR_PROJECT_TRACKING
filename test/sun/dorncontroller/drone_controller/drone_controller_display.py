@@ -91,10 +91,11 @@ class class_drone_controller_display:
 
     def update_video(self, frame):
         #frame = self.info.frame
-        pil_image = Image.fromarray(frame)
+        new_img = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
+        #pil_image = Image.fromarray(frame)
 
         # PIL 이미지를 PhotoImage로 변환
-        new_img = ImageTk.PhotoImage(image=pil_image)
+        #new_img = ImageTk.PhotoImage(image=pil_image)
         #self.frame_canvas.create_image(0, 0, image=new_img, anchor=tk.NW)
         self.frame_canvas.itemconfig(self.image_id,image=new_img)
         #self.window.after(10, self.update_video)
