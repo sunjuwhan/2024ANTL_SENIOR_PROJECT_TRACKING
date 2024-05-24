@@ -41,7 +41,7 @@ class class_Drone_Controller_VideoStreamer:
                     #if self.info.now_mode=="manual":
                     frame= cv2.resize(frame, (640, 480))
 # 변환된 이미지를 화면에 표시합니다.
-                    cv2.imshow('Resized Image', frame)
+                    #cv2.imshow('Resized Image', frame)
                     #self.info.frame = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2RGB)
                     self.info.display.update_video(frame)
                 #self.info.frame = frame
