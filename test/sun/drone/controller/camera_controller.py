@@ -22,7 +22,8 @@ class CameraController():
         device = pipeline_profile.get_device()
         device_product_line = str(device.get_info(rs.camera_info.product_line))
         #bgr
-        self.config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+        #self.config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+        self.config.enable_stream(rs.stream.color, 640, 480, rs.format.y8, 30)
 
     def run_fpv_cam(self):
         self.__picam2.start()  #picamera 시작한다.
