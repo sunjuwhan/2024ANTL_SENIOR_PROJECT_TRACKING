@@ -32,8 +32,8 @@ class class_Drone_Controller_VideoStreamer:
                 frame_data = b''.join([self.buffer[i] for i in sorted(self.buffer.keys()) if i in self.buffer])
                 frame = np.frombuffer(frame_data, dtype=np.uint8)
                 #frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
-                #if frame is not None:
-                #    cv2.imshow('Received Video', frame)
+                if frame is not None:
+                    cv2.imshow('Received Video', frame)
                 
                 #if cv2.waitKey(1) & 0xFF == ord('q'):
                 #    break
