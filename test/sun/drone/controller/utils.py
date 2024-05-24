@@ -42,7 +42,7 @@ class Image_Manager:
         #return 
 
     # bbox 만들기
-    def append_text_img(self, objs, labels,dur):
+    def append_text_img(self, objs, labels):
         height, width, _= self.frame.shape
 
         #fps=round(100/dur,1)
