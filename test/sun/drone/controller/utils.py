@@ -42,7 +42,7 @@ class Image_Manager:
         #return 
 
     # bbox 만들기
-    def append_text_img(self, objs, labels):
+    def append_text_img(self, objs, labels,dur):
         height, width, _= self.frame.shape
 
         #fps=round(100/dur,1)
@@ -53,7 +53,7 @@ class Image_Manager:
 
         #text1 = 'FPS: {}'.format(dur)
         
-        self.frame = cv2.putText(self.frame,  (10, 20),FONT, 0.7, (0, 0, 255), 2)
+        #self.frame = cv2.putText(self.frame, text1, (10, 20),FONT, 0.7, (0, 0, 255), 2)
         
         #아래는 대충 사각형으로 오브젝트를 감싸는 내용
         for obj in objs:
