@@ -43,8 +43,8 @@ class SocketView():
                     size_of_send=15
                 else:
                     size_of_send=4
-                cv2.imshow("test",frame)
-                _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),75])
+        s
+                _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),50])
                 
                 s=encoded_frame.tobytes()
                 packet_size = 65507  # UDP 패킷 최대 크기 (식별자 바이트를 위해 1 바이트 제외)
