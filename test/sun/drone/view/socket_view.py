@@ -9,6 +9,7 @@ from model.gps_model import *
 import socket
 import time
 import cv2
+import struct
 from picamera2 import Picamera2
 class SocketView():
     def __init__(self,model:PilotModel,video:VideoModel,gps:GpsModel) -> None:
@@ -41,10 +42,20 @@ class SocketView():
                     size_of_send=15
                 else:
                     size_of_send=4
-                _, encoded_frame=cv2.imencode('.jpg',frame)
+                _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),30])
+                
                 s=encoded_frame.tobytes()
-                for i in range(size_of_send):
+                packet_size = 65507 - 1  # UDP 패킷 최대 크기 (식별자 바이트를 위해 1 바이트 제외)
+                num_packets = len(s) // packet_size + (1 if len(s) % packet_size != 0 else 0)
+                
+
+                for i in range(num_packets):
+                    packet_data = s[i*packet_size:(i+1)*packet_size]
+                    packet = struct.pack("B", i) + packet_data
                     self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
+                    
+                #for i in range(num_packets):
+                #    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
             except Exception as e:
                 pass
     def __data_recv(self):
