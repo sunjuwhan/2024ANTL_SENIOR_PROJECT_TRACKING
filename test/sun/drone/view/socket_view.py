@@ -38,13 +38,13 @@ class SocketView():
                 size_of_send=0
 
                 if now_mode=="gps" or now_mode=="tracking":
-                    size_of_send=20
+                    size_of_send=15
                 else:
-                    size_of_send=5
+                    size_of_send=4
                 _, encoded_frame=cv2.imencode('.jpg',frame)
                 s=encoded_frame.tobytes()
                 for i in range(size_of_send):
-                    self.video_socket.sendto(bytes([i]) +s[i*46080:(i+1) *46080], (IP_CONTROLLER, PORT_CONTROLLER))
+                    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
             except Exception as e:
                 pass
     def __data_recv(self):

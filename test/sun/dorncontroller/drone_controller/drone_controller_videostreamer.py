@@ -22,13 +22,13 @@ class class_Drone_Controller_VideoStreamer:
             
             size=0
             if self.info.now_mode=="manual":
-                size=5
+                size=4
             else:
-                size=20
+                size=15
             picture = b''
             #self.info.now_mode="manual"
-            data, addr = self.socket.recvfrom(46081)  # 각 패킷은 46081바이트
-            frames[data[0]] = data[1:46081]  # 수신된 프레임 데이터 저장
+            data, addr = self.socket.recvfrom(65507)  # 각 패킷은 46081바이   46081에서 65507
+            frames[data[0]] = data[1:65507]  # 수신된 프레임 데이터 저장
             if data[0] == size-1:  # 모든 패킷을 다 받았을 때
                 for i in range(size):
                     picture += frames[i]  # 모든 프레임 데이터를 하나로 합침
