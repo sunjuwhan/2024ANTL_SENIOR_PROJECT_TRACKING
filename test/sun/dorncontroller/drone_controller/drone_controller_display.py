@@ -24,6 +24,7 @@ class class_drone_controller_display:
         self.window = tk.Tk()
         self.window.title("Flight Controller Display")
         self.window.geometry("800x480")  # Set window size to 800x480
+        self.image_id = None
         # 새로운 스레드를 생성하여 update_video 메서드를 실행합니다.
         #self.video_thread = threading.Thread(target=self.update_video_thread)
         #self.video_thread.daemon = True  # 데몬 스레드로 설정하여 메인 스레드 종료 시 함께 종료됩니다.
@@ -39,7 +40,7 @@ class class_drone_controller_display:
 
         self.frame_canvas = tk.Canvas(self.window, width=640, height=480)
         self.frame_canvas.grid(row=0, column=0, sticky="nsew")
-        self.frame_canvas.create_image(0, 0, image=self.vid, anchor=tk.NW)
+        self.image_id = self.frame_canvas.create_image(0, 0, image=self.vid, anchor=tk.NW)
 
         self.info_frame = tk.Frame(self.window, bg="#808080", width=160, height=480, bd=2, relief=tk.SOLID)  # Adjusted height for info frame
         self.info_frame.grid(row=0, column=1, sticky="nsew")
@@ -95,7 +96,7 @@ class class_drone_controller_display:
         # PIL 이미지를 PhotoImage로 변환
         new_img = ImageTk.PhotoImage(image=pil_image)
         #self.frame_canvas.create_image(0, 0, image=new_img, anchor=tk.NW)
-        self.frame_canvas.itemconfig("new_img",image=new_img)
+        self.frame_canvas.itemconfig(self.image_id,image=new_img)
         #self.window.after(10, self.update_video)
 
     def update_switches(self):
