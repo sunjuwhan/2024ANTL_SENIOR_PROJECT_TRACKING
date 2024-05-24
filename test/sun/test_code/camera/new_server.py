@@ -6,7 +6,7 @@ import threading
 from picamera2 import Picamera2
 
 # 서버 IP와 포트 설정
-SERVER_IP = '192.168.32.1'
+SERVER_IP = '192.168.32.3'
 SERVER_PORT = 9999
 ADDR = (SERVER_IP, SERVER_PORT)
 

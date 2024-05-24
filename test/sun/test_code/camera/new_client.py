@@ -5,7 +5,7 @@ import threading
 import collections
 import struct
 # 클라이언트 IP와 포트 설정
-CLIENT_IP = '192.168.32.1'
+CLIENT_IP = '192.168.32.3'
 CLIENT_PORT = 9999
 ADDR = (CLIENT_IP, CLIENT_PORT)
 
