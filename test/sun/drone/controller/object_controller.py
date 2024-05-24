@@ -32,7 +32,7 @@ class ObjectController:
             if self.__video_model.now_mode=="manual":  #manual 모드이면 일시정지 해주고
                 continue
 
-            start_time = time.time()            
+            #start_time = time.time()            
             frame = self.__video_model.get_raw_frame()
             _, _, pil_im = self.image_manager.recog_image(frame)
 
@@ -49,10 +49,9 @@ class ObjectController:
                 print("ERROR :: follower did not work")
                 print(e)
 
-            fps = round(1.0/(time.time() - start_time), 1)
+            #fps = round(1.0/(time.time() - start_time), 1)
             self.image_manager.append_text_img(objs=objs,
-                                               labels=self.tool.get_labels(),
-                                               dur=fps)          
+                                               labels=self.tool.get_labels())          
             # bbox된 이미지 데이터를 다시 카메라 프레임으로 설정
             bboxed_frame = self.image_manager.get_frame()
             self.__video_model.set_frame2bboxed_frame(bboxed_frame)
