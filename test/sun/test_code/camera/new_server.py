@@ -32,7 +32,7 @@ def send_video():
         data = buffer.tobytes()
         
         # 프레임을 청크로 분할하여 전송
-        packet_size = 65507 - 3  # UDP 패킷 최대 크기 (프레임 ID와 패킷 ID를 위해 3 바이트 제외)
+        packet_size = 65507 - 10  # UDP 패킷 최대 크기 (프레임 ID와 패킷 ID를 위해 3 바이트 제외)
         num_packets = len(data) // packet_size + (1 if len(data) % packet_size != 0 else 0)
 
         for i in range(num_packets):
@@ -40,7 +40,7 @@ def send_video():
             packet = struct.pack("BH", i, frame_id) + packet_data
             server_socket.sendto(packet, ADDR)
         
-        frame_id = (frame_id + 1) % 65536  # 프레임 ID는 0-65535 범위를 유지
+        frame_id = (frame_id + 1) % 65527  # 프레임 ID는 0-65535 범위를 유지
 
     cap.release()
 
