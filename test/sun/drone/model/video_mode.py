@@ -8,7 +8,7 @@ class VideoModel():
         #self.__cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
         self.__picam2=Picamera2()
         self.__picam2.preview_configuration.main.size = (320, 240)
-        #self.__picam2.preview_configuration.main.format = "RGB888"
+        self.__picam2.preview_configuration.main.format = "RGB888"
         self.__picam2.preview_configuration.main.format = "Y8"
         self.__picam2.preview_configuration.align()
         self.__picam2.configure("preview")
