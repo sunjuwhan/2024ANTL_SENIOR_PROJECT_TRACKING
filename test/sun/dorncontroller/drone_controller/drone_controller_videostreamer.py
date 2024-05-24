@@ -29,9 +29,9 @@ class class_Drone_Controller_VideoStreamer:
             
             # 패킷 ID가 0이면 프레임 재구성 시도
             if packet_id == 0:
-                frame_data = b''.join([self.buffer[i] for i in sorted(self.buffer.keys()) if i in self.buffer])
+                frame_data = b''.join([self.buffer[i] for i in sorted(self.buffer.keys())])
                 frame = np.frombuffer(frame_data, dtype=np.uint8)
-                #frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
+                frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
                 if frame is not None:
                     cv2.imshow('Received Video', frame)
                 
