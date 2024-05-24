@@ -22,8 +22,9 @@ class Image_Manager:
         pil_im = Image.fromarray(cv2_im_rgb)
         # 최초에 한번만 연산
         if not self.init_flag:
+            print(frame.shape)
             self.height, self.width, _ = frame.shape
-            self.init_flag == True
+            self.init_flag = True
             
         return self.width, self.height, pil_im
     
