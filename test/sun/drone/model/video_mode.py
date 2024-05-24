@@ -12,7 +12,7 @@ class VideoModel():
         #self.__picam2.preview_configuration.main.format = "Y8"
         #self.__picam2.preview_configuration.align()
         #self.__picam2.configure("preview")
-        config = self.__picam2.create_preview_configuration(main={"size": (640, 480)})
+        config = self.__picam2.create_preview_configuration(main={"size": (320, 240)})
         self.__picam2.configure(config)
         #self.__picam2.start()
         self.__frame=None  #원본 진짜 그자체

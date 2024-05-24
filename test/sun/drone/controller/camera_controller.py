@@ -26,6 +26,8 @@ class CameraController():
         #self.config.enable_stream(rs.stream.color, 640, 480, rs.format.y8, 30)
 
     def run_fpv_cam(self):
+        config = self.__picam2.create_preview_configuration(main={"size": (320, 240)})
+        self.__picam2.configure(config)
         self.__picam2.start()  #picamera 시작한다.
         while True:
             if(self.__model.get_end_flag()==True):
