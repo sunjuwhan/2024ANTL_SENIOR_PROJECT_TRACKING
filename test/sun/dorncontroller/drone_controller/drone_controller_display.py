@@ -94,7 +94,8 @@ class class_drone_controller_display:
 
         # PIL 이미지를 PhotoImage로 변환
         self.photo = ImageTk.PhotoImage(image=pil_image)
-        self.frame_canvas.create_image(0, 0, image=self.photo, anchor=tk.NW)
+        #self.frame_canvas.create_image(0, 0, image=self.photo, anchor=tk.NW)
+        self.frame_canvas.itemconfig("new_img",image=self.photo)
         #self.window.after(10, self.update_video)
 
     def update_switches(self):
