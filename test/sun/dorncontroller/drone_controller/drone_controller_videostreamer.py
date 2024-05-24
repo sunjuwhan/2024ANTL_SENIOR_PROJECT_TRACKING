@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 import socket
-import numpy
+import time
+
 from drone_controller.drone_controller_information import *
 AP_IP="192.168.32.1"
 PORT=8005
@@ -51,5 +52,6 @@ class class_Drone_Controller_VideoStreamer:
                 #if cv2.waitKey(1) & 0xFF == ord('q'):
                 #    cv2.destroyAllWindows()
                 #    break
+            time.sleep(0.01)
     def run_VideoStreamer(self):
         self.receive_video()

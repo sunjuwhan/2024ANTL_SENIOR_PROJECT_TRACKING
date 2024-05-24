@@ -68,3 +68,4 @@ class class_drone_controller_datasender:
             # 조이스틱 값 TCP 전송
             print(joystick_data)
             self.send_joystick_data(joystick_data)
+            time.sleep(0.01)

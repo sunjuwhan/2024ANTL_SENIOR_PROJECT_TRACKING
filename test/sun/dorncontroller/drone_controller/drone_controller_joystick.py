@@ -69,8 +69,10 @@ class class_Drone_Controller_Joystick:
             self.ctrl_info.joystick_Right_x = float((self.stabil_vrx_2(x_pos)-500)/500)
             self.ctrl_info.joystick_Right_y = float((self.stabil_vry_2(y_pos)-500)/500)
             self.ctrl_info.joystick_Right_val = switch_val
+
             
 
     def run_joystick(self):
         while True:
             self.read_position()
+            time.sleep(0.01)
