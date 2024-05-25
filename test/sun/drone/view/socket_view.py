@@ -38,7 +38,9 @@ class SocketView():
                 frame=self.__video_model.get_send_frame()  #46081
                 now_mode=self.__pilot_mode.get_data()[1]
                 size_of_send=0
-
+                cv2.imshow("send_img", frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
                 if now_mode=="gps" or now_mode=="tracking":
                     size_of_send=15
                 else:

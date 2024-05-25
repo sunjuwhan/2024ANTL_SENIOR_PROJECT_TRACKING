@@ -26,8 +26,6 @@ class CameraController():
         #self.config.enable_stream(rs.stream.color, 640, 480, rs.format.y8, 30)
 
     def run_fpv_cam(self):
-        config = self.__picam2.create_preview_configuration(main={"size": (320, 240)})
-        self.__picam2.configure(config)
         self.__picam2.start()  #picamera 시작한다.
         while True:
             if(self.__model.get_end_flag()==True):
@@ -36,7 +34,6 @@ class CameraController():
                 self.__picam2.stop()
                 return
             frame=self.__picam2.capture_array()
-            cv2.imshow("fpv", frame)
             self.__model.set_raw_frame(frame) 
             self.__model.set_send_frame(frame)  #보내야할 찐도베이 frame이고
                 
