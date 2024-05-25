@@ -36,19 +36,19 @@ class SocketView():
         while True : 
             try:
                 frame=self.__video_model.get_send_frame()  #46081
-                now_mode=self.__pilot_mode.get_data()[1]
-                size_of_send=0
+                #now_mode=self.__pilot_mode.get_data()[1]
+                #size_of_send=0
                 cv2.imshow("send_img", frame)
                 t1= time.time()
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
-                if now_mode=="gps" or now_mode=="tracking":
-                    size_of_send=15
-                else:
-                    size_of_send=4
+                #if now_mode=="gps" or now_mode=="tracking":
+                #    size_of_send=15
+                #else:
+                #    size_of_send=4
 
-                _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),50])
-
+                #_, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),50])
+                encoded_frame = frame
                 s=encoded_frame.tobytes()
                 packet_size = 65507  # UDP 패킷 최대 크기 (식별자 바이트를 위해 1 바이트 제외)
                 num_packets = len(s) // packet_size + (1 if len(s) % packet_size != 0 else 0)
@@ -67,7 +67,7 @@ class SocketView():
                 print(t2-t1)
             except Exception as e:
                 pass
-            time.sleep(0.001)
+
     def __data_recv(self):
         while True:
             try:
