@@ -93,6 +93,7 @@ class SocketView():
                 mode_data="comback"
                 self.__pilot_mode.set_data(key_data,mode_data)
                 print(e)
+            time.sleep(0.001)
     def run(self):
         try:
             print("making thread")
