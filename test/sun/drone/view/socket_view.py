@@ -39,6 +39,7 @@ class SocketView():
                 now_mode=self.__pilot_mode.get_data()[1]
                 size_of_send=0
                 cv2.imshow("send_img", frame)
+                t1= time.time()
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
                 if now_mode=="gps" or now_mode=="tracking":
@@ -54,13 +55,16 @@ class SocketView():
                 
 
                 for i in range(num_packets):
-                    packet_data = s[i*packet_size:(i+1)*packet_size]
-                    self.video_socket.sendto(struct.pack("B",i)+packet_data ,(IP_CONTROLLER, PORT_CONTROLLER))
+                    #packet_data = s[i*packet_size:(i+1)*packet_size]
+                    #self.video_socket.sendto(struct.pack("B",i)+packet_data ,(IP_CONTROLLER, PORT_CONTROLLER))
+                    self.video_socket.sendto(struct.pack("B", i) + s[i*packet_size:(i+1)*packet_size], (IP_CONTROLLER, PORT_CONTROLLER))
                     #packet = struct.pack("B", i) + packet_data
                     #self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
-                    time.sleep(0.001)
+                    #time.sleep(0.001)
                 #for i in range(num_packets):
                 #    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
+                t2=time.time()
+                print(t2-t1)
             except Exception as e:
                 pass
     def __data_recv(self):
