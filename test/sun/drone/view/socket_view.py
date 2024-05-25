@@ -67,6 +67,7 @@ class SocketView():
                 print(t2-t1)
             except Exception as e:
                 pass
+            time.sleep(0.001)
     def __data_recv(self):
         while True:
             try:
