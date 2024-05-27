@@ -11,5 +11,5 @@ if __name__ == "__main__":
         # 결과를 기다립니다.
         result_A.wait()
         result_B.wait()
-
+    print("now")
 
