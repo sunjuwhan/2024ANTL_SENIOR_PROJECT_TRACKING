@@ -14,27 +14,13 @@ import time
 
 class MainCamera():
     def __init__(self) -> None:
-        print("1")
         self.__pilot_model=model.PilotModel()
-        print("2")
         self.__camera_model=model.VideoModel() 
-
-        print("3")
         self.__gps_model=model.GpsModel()
-        
-        print("4")
         self.__tracker_model=model.tracker_model()
-
-        print("5")
         self.__controller=controller.Master_video_controller(self.__pilot_model,self.__camera_model,self.__gps_model,self.__tracker_model)
-
-        print("6")
         self.__view= view.SocketView(self.__pilot_model,self.__camera_model,self.__gps_model)
-        
-        print("7")
         self.__object=controller.ObjectController(self.__camera_model,self.__tracker_model)  
-        
-        print("8")
     def run(self):
         print("run object Detecter ")
         dectetor_thread=Thread(target=self.__object.run_object_detector) 
@@ -56,15 +42,10 @@ class MainCamera():
         
 class MainDrone():
     def __init__(self) -> None:
-        print("a")
         self.__pilot_model=model.PilotModel()
-        print('b')
         self.__gps_model=model.GpsModel()
-        print('c')
         self.__controller=controller.Master_drone_Controller(self.__pilot_model,self.__gps_model)
-        print('d')
         self.__view= view.Socket_view_drone(self.__pilot_model,self.__gps_model)
-        print('d')
         
     def run(self):
         self.__view.run_drone()
@@ -82,16 +63,16 @@ def run_camera():
 
 def run_drone():
     main_drone=MainDrone()
-    main_drone.run_drone_main() 
+    main_drone.run()
+    asyncio.run(main_drone.run_pilot()) 
     
 if __name__ == "__main__":
-    with Pool(processes=2) as pool:  # 2개의 프로세스로 풀을 만듭니다.
-        print("Start Multi Processing Drone")
-        
-        result_A = pool.apply_async(run_camera)
-        result_B = pool.apply_async(run_drone)
-        # 결과를 기다립니다.
-        result_A.wait()
-        result_B.wait()
-    print("now")
+    p=Pool(2)
+    result_A=p.apply_async(run_camera,)
+    result_B=p.apply_async(run_drone,)
+    p.close()
+    p.join()
+    
+    
+    
 

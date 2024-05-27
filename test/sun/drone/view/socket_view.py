@@ -79,12 +79,13 @@ class SocketView():
                 packet_size = 65507 - 3  # UDP 패킷 최대 크기 (식별자 바이트를 위해 1 바이트 제외)
                 num_packets = len(s) // packet_size + (1 if len(s) % packet_size != 0 else 0)
                 
-
                 for i in range(num_packets):
                     packet_data = s[i*packet_size:(i+1)*packet_size]
                     packet = struct.pack("BH", i,frame_id) + packet_data
                     self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
+                    
                 frame_id=(frame_id+1) %65536
+                
                 #for i in range(num_packets):
                 #    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
             except Exception as e:

@@ -18,12 +18,12 @@ def function_B():
         time.sleep(1)
 
 if __name__ == "__main__":
-    with Pool(processes=2) as pool:  # 2개의 프로세스로 풀을 만듭니다.
-        result_A = pool.apply_async(function_A)
-        result_B = pool.apply_async(function_B)
+    p=Pool(2)
+    result_A = p.apply_async(function_A,)
+    result_B = p.apply_async(function_B,)
 
-        # 결과를 기다립니다.
-        result_A.wait()
-        result_B.wait()
+    # 결과를 기다립니다.
+    p.close()
+    p.join()
 
     print("Both processes have finished execution.")
