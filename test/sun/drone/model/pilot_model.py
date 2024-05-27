@@ -19,32 +19,34 @@ class Drone:
         #await self.antl_drone.connect(system_address="udp://:14540")
         print("Wating for drone to connect...")  #drone connect 
         
-        async for state in self.antl_drone.core.connection_state():
-            if state.is_connected:
-                print(f"-- Connected to drone!")
-                break
+        #async for state in self.antl_drone.core.connection_state():
+        #    if state.is_connected:
+        #        print(f"-- Connected to drone!")
+        #        break
             
-        async for health in self.antl_drone.telemetry.health():
-            if health.is_global_position_ok and health.is_home_position_ok:
-                print("-- Global position state is good enough for flying.")
-                break
-        try:
-            await self.antl_drone.manual_control.set_manual_control_input
-            (float(0), float(0), float(0.5), float(0))
-            print("good")
+        #async for health in self.antl_drone.telemetry.health():
+        #    if health.is_global_position_ok and health.is_home_position_ok:
+        #        print("-- Global position state is good enough for flying.")
+        #        break
+        #try:
+        #    await self.antl_drone.manual_control.set_manual_control_input
+        #    (float(0), float(0), float(0.5), float(0))
+        #    print("good")
             
-        except Exception as e:
-            print(e)
+        #except Exception as e:
+        #    print(e)
             
             
-        print("Fetching amsl altitude at home location....")
-        async for terrain_info in self.antl_drone.telemetry.home():
-            absolute_altitude = terrain_info.absolute_altitude_m
-            break
+        #print("Fetching amsl altitude at home location....")
+        #async for terrain_info in self.antl_drone.telemetry.home():
+            #absolute_altitude = terrain_info.absolute_altitude_m
+            #break
         
-        self.flying_alt=absolute_altitude+6
-        print('======================self.flying alt')
-        print(self.flying_alt)
+        #self.flying_alt=absolute_altitude+6
+        #print('======================self.flying alt')
+        #print(self.flying_alt)
+        
+        self.flying_alt=6  
         #print("-- Arming")
         #await self.antl_drone.action.arm()
         #await asyncio.sleep(1)
