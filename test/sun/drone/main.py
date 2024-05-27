@@ -1,5 +1,4 @@
 import controller
-import controller.master_drone_controller
 import model
 import view 
 import asyncio
@@ -16,14 +15,6 @@ class Main():
         self.__view= view.socket_view_drone(self.__pilot_model,self.__gps_model)
         
     def run(self):
-        #print("run object Detecter ")
-        #dectetor_thread=Thread(target=self.__object.run_object_detector) 
-        #dectetor_thread.start()
-        #print("run camera thread")
-        #camera_thread=Thread(target=self.__controller.run_camera)
-        #camera_thread.start()
-        #print("camera Thread Running ")
-        #time.sleep(3)
         self.__view.run_drone()
         print("end camera & socket setting ")
     async def run_pilot(self) :

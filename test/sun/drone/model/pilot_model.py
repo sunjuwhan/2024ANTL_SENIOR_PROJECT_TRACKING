@@ -10,17 +10,19 @@ class Drone:
         
         self.antl_drone=System()
         print("wating connect drone")
-        await self.antl_drone.connect(system_address="serial:///dev/ttyAMA0")
+        #await self.antl_drone.connect(system_address="serial:///dev/ttyAMA0")
+        
+        
         #await self.antl_drone.connect(system_address="udp://:14540")
         
         print("Start connect") 
         #await self.antl_drone.connect(system_address="udp://:14540")
         print("Wating for drone to connect...")  #drone connect 
         
-        async for state in self.antl_drone.core.connection_state():
-            if state.is_connected:
-                print(f"-- Connected to drone!")
-                break
+        #async for state in self.antl_drone.core.connection_state():
+        #    if state.is_connected:
+        #        print(f"-- Connected to drone!")
+        #        break
             
         #async for health in self.antl_drone.telemetry.health():
         #    if health.is_global_position_ok and health.is_home_position_ok:

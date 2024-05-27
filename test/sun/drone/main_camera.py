@@ -1,5 +1,4 @@
 import controller
-import controller.master_video_controller
 import model
 import view 
 import asyncio
