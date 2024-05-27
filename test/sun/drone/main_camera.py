@@ -1,4 +1,5 @@
 import controller
+import controller.master_video_controller
 import model
 import view 
 import asyncio
@@ -12,7 +13,7 @@ class Main():
         self.__gps_model=model.GpsModel()
         self.__tracker_model=model.tracker_model()
         
-        self.__controller=controller.MasterController(self.__pilot_model,self.__camera_model,self.__gps_model,self.__tracker_model)
+        self.__controller=controller.master_video_controller(self.__pilot_model,self.__camera_model,self.__gps_model,self.__tracker_model)
         self.__view= view.SocketView(self.__pilot_model,self.__camera_model,self.__gps_model)
         
         self.__object=controller.ObjectController(self.__camera_model,self.__tracker_model)  

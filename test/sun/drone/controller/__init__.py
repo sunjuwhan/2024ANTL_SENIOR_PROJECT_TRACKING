@@ -5,3 +5,5 @@ from controller.constant import *
 from controller.object_controller import *
 from controller.pilot_controller import *
 from controller.utils import *
+from controller.master_drone_controller import *
+from controller.master_video_controller import *

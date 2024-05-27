@@ -1,21 +1,21 @@
 import controller
+import controller.master_drone_controller
 import model
 import view 
 import asyncio
 from threading import *
 import time
+
+import view.socket_view_drone
 class Main():
     def __init__(self) -> None:
 
         self.__pilot_model=model.PilotModel()
-        self.__camera_model=model.VideoModel() 
         self.__gps_model=model.GpsModel()
-        self.__tracker_model=model.tracker_model()
+        self.__controller=controller.master_drone_controller(self.__pilot_model,self.__gps_model)
         
-        self.__controller=controller.MasterController(self.__pilot_model,self.__camera_model,self.__gps_model,self.__tracker_model)
-        self.__view= view.SocketView(self.__pilot_model,self.__camera_model,self.__gps_model)
+        self.__view= view.socket_view_drone(self.__pilot_model,self.__gps_model)
         
-        self.__object=controller.ObjectController(self.__camera_model,self.__tracker_model)  
     def run(self):
         #print("run object Detecter ")
         #dectetor_thread=Thread(target=self.__object.run_object_detector) 
