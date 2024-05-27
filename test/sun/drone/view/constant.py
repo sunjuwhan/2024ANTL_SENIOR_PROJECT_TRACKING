@@ -8,7 +8,7 @@ IP_DRONE="192.168.32.3"    #자기 자신 ip주소 즉 button 값들을 받아�
 #192.168.50.63
 #192.168.32.3
 PORT_DRONE=8080
-
+PORT_VIDEO=9999
 
 #IP_CONTROLLER="192.168.50.15"   #컨트롤러 ip
 

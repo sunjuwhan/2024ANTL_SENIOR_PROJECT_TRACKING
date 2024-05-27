@@ -16,6 +16,8 @@ class class_drone_controller_datasender:
         while True:
             try:
                 self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.video_sender_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  #영상 송수신을 위한 현재 드론 상태를 받을곳
+                self.video_sender_socket.connect((self.target_ip,9999))
                 self.socket.connect((self.target_ip, self.target_port))
                 break
             except:
@@ -24,6 +26,7 @@ class class_drone_controller_datasender:
     def send_joystick_data(self, data):
         try:
             # 데이터를 직렬화하고 전송
+            self.video_sender_socket.sendto(data.encode(),(self.target_ip,9999))
             self.socket.sendto(data.encode(),(self.target_ip,self.target_port))
             recv_data=self.socket.recv(100).decode().split(' ')
             #self.info.arm_data=self.socket.recv(100).decode()  #다시 전달받아
@@ -68,4 +71,5 @@ class class_drone_controller_datasender:
             # 조이스틱 값 TCP 전송
             print(joystick_data)
             self.send_joystick_data(joystick_data)
-            time.sleep(0.01)
+            time.sleep(0.005)
+        

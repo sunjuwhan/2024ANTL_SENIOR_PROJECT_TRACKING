@@ -25,7 +25,7 @@ class Main():
         camera_thread.start()
         print("camera Thread Running ")
         time.sleep(3)
-        self.__view.run()
+        self.__view.run_camera()
         print("end camera & socket setting ")
         
     async def run_pilot(self) :
@@ -35,6 +35,6 @@ if __name__=="__main__":
     main_function=Main()
     print("start")
     main_function.run()
-    asyncio.run(main_function.run_pilot())
+    #asyncio.run(main_function.run_pilot())
         
         
