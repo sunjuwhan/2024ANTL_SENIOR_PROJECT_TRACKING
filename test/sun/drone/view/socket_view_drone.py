@@ -10,7 +10,7 @@ import time
 import cv2
 import struct
 from picamera2 import Picamera2
-class SocketView():
+class Socket_view_drone():
     def __init__(self,model:PilotModel,gps:GpsModel) -> None:
         self.video_socket=None
         self.pilot_socket=None

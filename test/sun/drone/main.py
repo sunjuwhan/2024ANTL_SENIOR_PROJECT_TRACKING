@@ -5,14 +5,14 @@ import asyncio
 from threading import *
 import time
 
-import view.socket_view_drone
+import view
 
 class Main():
     def __init__(self) -> None:
         self.__pilot_model=model.PilotModel()
         self.__gps_model=model.GpsModel()
         self.__controller=controller.Master_drone_Controller(self.__pilot_model,self.__gps_model)
-        self.__view= view.socket_view_drone(self.__pilot_model,self.__gps_model)
+        self.__view= view.Socket_view_drone(self.__pilot_model,self.__gps_model)
         
     def run(self):
         self.__view.run_drone()
