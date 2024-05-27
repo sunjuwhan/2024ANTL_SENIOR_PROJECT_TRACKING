@@ -9,10 +9,15 @@ import view
 
 class MainDrone():
     def __init__(self) -> None:
+        print("a")
         self.__pilot_model=model.PilotModel()
+        print('b')
         self.__gps_model=model.GpsModel()
+        print('c')
         self.__controller=controller.Master_drone_Controller(self.__pilot_model,self.__gps_model)
+        print('d')
         self.__view= view.Socket_view_drone(self.__pilot_model,self.__gps_model)
+        print('d')
         
     def run(self):
         self.__view.run_drone()
