@@ -1,7 +1,7 @@
 from controller.pilot_controller import *
 from model.pilot_model import *
 from model.gps_model import *
-class MasterController():
+class Master_drone_Controller():
     def __init__(self,pilot_model:PilotModel,gps_model:GpsModel) : 
         self.__pilot_controller=None
         self.__pilot_model=pilot_model
