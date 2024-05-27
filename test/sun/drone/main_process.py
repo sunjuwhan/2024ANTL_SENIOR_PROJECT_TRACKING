@@ -8,7 +8,7 @@ if __name__ == "__main__":
         print("Start Multi Processing Drone")
         main_camera=MainCamera()
         main_drone=MainDrone()
-        result_A = pool.apply_async(main_camera.run_camera_main)
+        result_A = pool.apply_async(main_camera.run)
         result_B = pool.apply_async(main_drone.run_drone_main)
         # 결과를 기다립니다.
         result_A.wait()
