@@ -4,7 +4,7 @@ import view
 import asyncio
 from threading import *
 import time
-class Main():
+class MainCamera():
     def __init__(self) -> None:
 
         self.__pilot_model=model.PilotModel()
@@ -31,11 +31,13 @@ class Main():
         
     async def run_pilot(self) :
         await self.__controller.run_pilot()
-        
-if __name__=="__main__":
-    main_function=Main()
-    print("start")
-    main_function.run()
+    def run_camera_main(self):
+        print("camer Processe start")
+        self.run()
+#if __name__=="__main__":
+#    main_function=Main()
+#    print("start")
+#    main_function.run()
     #asyncio.run(main_function.run_pilot())
         
         
