@@ -27,7 +27,7 @@ class ObjectController:
         file_list=os.listdir(folder_path)
         image_files=[file for file in file_list if file.endswith(('jpg','jpeg','png'))]
         for imge_file in image_files:
-            print(imge_file)
+            print(folder_path+"//"+imge_file)
             frame=cv2.imread(imge_file)
         #반복되는 핵심 와일문
         #if self.__video_model.now_mode=="manual":  #manual 모드이면 일시정지 해주고
