@@ -22,8 +22,7 @@ class ObjectController:
     def __human_detection(self):
         # 라벨 세팅
         #distance = []
-        frame=cv2.imread("//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//test_code//objectdetector//person1.png")
-        fps = 1
+        frame=cv2.imread("//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//test_code//objectdetector//person2.png")
         #반복되는 핵심 와일문
         #if self.__video_model.now_mode=="manual":  #manual 모드이면 일시정지 해주고
         #    continue
@@ -37,11 +36,11 @@ class ObjectController:
         # output을 바탕으로 사용가능한 bbox인지 체크 및 그리기
         
         # 발견한 오브젝트의 거리를 분석
-        try:
-            self.__object_follower.check_object(objs=objs, frame=frame)
-        except Exception as e:
-            print("ERROR :: follower did not work")
-            print(e)
+        #try:
+        #    self.__object_follower.check_object(objs=objs, frame=frame)
+        #except Exception as e:
+        #    print("ERROR :: follower did not work")
+        #    print(e)
 
         #fps = round(1.0/(time.time() - start_time), 1)
         self.image_manager.append_text_img(objs=objs,
