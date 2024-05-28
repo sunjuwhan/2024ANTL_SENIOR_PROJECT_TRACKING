@@ -9,7 +9,7 @@ PATH_TO_LABEL = "/home/pi/2024ANTL_SENIOR_PROJECT_TRACKING/test/sun/test_code/ob
 
 EDGETPU = True
 
-MIN_CONF_THRESHOLD = 0.4  # 최소값
+MIN_CONF_THRESHOLD = 0.3  # 최소값
 SELECT_OBJ = "person"  # 타겟
 TOP_K = 3  # 보여주는 오브젝트 갯수
 FONT =cv2.FONT_HERSHEY_SIMPLEX
