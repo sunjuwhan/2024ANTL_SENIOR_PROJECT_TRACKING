@@ -48,7 +48,7 @@ def process_videos_in_folder(data_folder, output_folder):
 
 
 # 데이터 폴더와 출력 폴더 설정
-data_folder = 'C:\\Users\\ANTL\\Desktop\\drone-vis-recog-datasets-2-master\\data'  # mp4 파일이 있는 최상위 데이터 폴더
+data_folder = 'C:\\Users\\ANTL\\Desktop\\drone-vis-recog-datasets-3-master\\data'  # mp4 파일이 있는 최상위 데이터 폴더
 output_folder = 'C:\\Users\\ANTL\\Desktop\\GitHub\\2024ANTL_SENIOR_PROJECT_TRACKING\\test\\sun\\img'  # 랜덤 프레임이 저장될 폴더
 
 # 비디오 처리 실행
