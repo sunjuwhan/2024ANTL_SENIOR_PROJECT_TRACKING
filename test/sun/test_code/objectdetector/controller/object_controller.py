@@ -22,7 +22,7 @@ class ObjectController:
     def __human_detection(self):
         # 라벨 세팅
         #distance = []
-        frame=cv2.imread("//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//test_code//objectdetector//person1.png")
+        frame=cv2.imread("//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//test_code//objectdetector//person3.png")
         #반복되는 핵심 와일문
         #if self.__video_model.now_mode=="manual":  #manual 모드이면 일시정지 해주고
         #    continue
