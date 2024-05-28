@@ -18,7 +18,12 @@ class Tools:
     # 생성자
     def __init__(self):
         self.__load_model()
+        self.__count_person=0
         pass
+    def set_count_person(self):
+        self.__count_person+=1
+    def get_count_person(self):
+        return self.__count_person
     def __load_model(self):
         self.__set_interpreter_tpu()
         self.__input_image_size()
@@ -106,7 +111,7 @@ class Tools:
                     #chk_flag_person=True  #사람 찾았으니까 True로 바꿔주고 
                     #self.__tracker_model.set_bbox(x0,y0,x1,y1)  #이번에 추가한거 사람 인식되면 True로 바꿔줌
                     #self.__tracker_model.set_flag(True)  #flag True로 바꿔서 pilot_controller에서 True로 판단해서 object Detection 기능 수행
-                    COUNT_PERSON=COUNT_PERSON+1
+                    self.set_count_person()
                     filtered_objects.append(obj)
                     
         #if(chk_flag_person==False):

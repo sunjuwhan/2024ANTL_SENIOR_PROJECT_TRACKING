@@ -15,6 +15,7 @@ class ObjectController:
         #self.__mode:ModeModel = mode
         self.status = 0 # 0 : 정지, 1 : 동작, 2 : 일시정지
         self.pause_flag = False
+        self.count_person=0
         self.tool = Tools() # 로드 모델, 로드 라벨, 텐서 세팅
         self.image_manager = Image_Manager()
         self.__object_follower = ObjectFollower(key=self.__key) # 검색 시작
@@ -58,7 +59,7 @@ class ObjectController:
             cv2.waitKey(0)
 
             #self.__video_model.set_frame2bboxed_frame(bboxed_frame)
-        print(COUNT_PERSON)
+        print(self.tool.get_count_person())
     # 실행기
     def run_object_detector(self):
         self.status = 1 # 텐서 연산을 한다 : 1, 안한다 : 2
