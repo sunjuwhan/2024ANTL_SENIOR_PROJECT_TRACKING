@@ -66,13 +66,14 @@ class SocketView():
         while True : 
             try:
                 frame=self.__video_model.get_send_frame()  #46081
+                frame=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
                 now_mode=self.__pilot_mode.get_data()[1]  
-                size_of_send=0
+                #size_of_send=0
 
-                if now_mode=="gps" or now_mode=="tracking":
-                    size_of_send=15
-                else:
-                    size_of_send=4
+                #if now_mode=="gps" or now_mode=="tracking":
+                    #size_of_send=15
+                #else:
+                    #size_of_send=4
                 _, encoded_frame=cv2.imencode('.jpg',frame,[int(cv2.IMWRITE_JPEG_QUALITY),50])
                 
                 s=encoded_frame.tobytes()
@@ -83,11 +84,7 @@ class SocketView():
                     packet_data = s[i*packet_size:(i+1)*packet_size]
                     packet = struct.pack("BH", i,frame_id) + packet_data
                     self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
-                    
                 frame_id=(frame_id+1) %65536
-                
-                #for i in range(num_packets):
-                #    self.video_socket.sendto(bytes([i]) +s[i*65506:(i+1) *65506], (IP_CONTROLLER, PORT_CONTROLLER)) #46080
             except Exception as e:
                 pass
     def __data_recv_cam(self):
