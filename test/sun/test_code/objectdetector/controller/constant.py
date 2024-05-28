@@ -3,7 +3,8 @@ import cv2
 
 PATH_TO_MODEL = "/home/pi/2024ANTL_SENIOR_PROJECT_TRACKING/test/sun/test_code/objectdetector/mobilenet_ssd/"
 MODEL = "mobilenet_ssd_v2_coco_quant_postprocess.tflite"
-TPU_MODEL = "mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite"
+#TPU_MODEL = "mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite"
+TPU_MODEL="yolov4-tiny-416"
 PATH_TO_LABEL = "/home/pi/2024ANTL_SENIOR_PROJECT_TRACKING/test/sun/test_code/objectdetector/mobilenet_ssd/coco_labels.txt"
 
 
