@@ -15,7 +15,7 @@ class ObjectController:
         #self.__mode:ModeModel = mode
         self.status = 0 # 0 : 정지, 1 : 동작, 2 : 일시정지
         self.pause_flag = False
-        self.tool = Tools(self.__tracker_model) # 로드 모델, 로드 라벨, 텐서 세팅
+        self.tool = Tools() # 로드 모델, 로드 라벨, 텐서 세팅
         self.image_manager = Image_Manager()
         self.__object_follower = ObjectFollower(key=self.__key) # 검색 시작
 
