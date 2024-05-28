@@ -7,7 +7,6 @@ import numpy as np
 from threading import Thread
 import time
 
-from model import VideoModel
 
 
 class ObjectController:
