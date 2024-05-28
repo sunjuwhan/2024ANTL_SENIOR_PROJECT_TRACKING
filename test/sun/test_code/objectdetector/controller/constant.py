@@ -9,6 +9,8 @@ PATH_TO_LABEL = "/home/pi/2024ANTL_SENIOR_PROJECT_TRACKING/test/sun/test_code/ob
 
 EDGETPU = True
 
+COUNT_PERSON=0
+
 MIN_CONF_THRESHOLD = 0.3  # 최소값
 SELECT_OBJ = "person"  # 타겟
 TOP_K = 3  # 보여주는 오브젝트 갯수
@@ -20,3 +22,4 @@ EDGETPU_SHARED_LIB = {
   'Darwin': 'libedgetpu.1.dylib',
   'Windows': "edgetpu.dll"
 }[platform.system()]
+

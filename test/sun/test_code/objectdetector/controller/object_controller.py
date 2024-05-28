@@ -58,7 +58,7 @@ class ObjectController:
             cv2.waitKey(0)
 
             #self.__video_model.set_frame2bboxed_frame(bboxed_frame)
-
+        print(COUNT_PERSON)
     # 실행기
     def run_object_detector(self):
         self.status = 1 # 텐서 연산을 한다 : 1, 안한다 : 2

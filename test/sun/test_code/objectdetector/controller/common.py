@@ -106,6 +106,7 @@ class Tools:
                     #chk_flag_person=True  #사람 찾았으니까 True로 바꿔주고 
                     #self.__tracker_model.set_bbox(x0,y0,x1,y1)  #이번에 추가한거 사람 인식되면 True로 바꿔줌
                     #self.__tracker_model.set_flag(True)  #flag True로 바꿔서 pilot_controller에서 True로 판단해서 object Detection 기능 수행
+                    COUNT_PERSON+=1
                     filtered_objects.append(obj)
                     
         #if(chk_flag_person==False):
