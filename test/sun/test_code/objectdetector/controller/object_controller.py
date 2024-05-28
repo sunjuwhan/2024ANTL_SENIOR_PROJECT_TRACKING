@@ -49,7 +49,7 @@ class ObjectController:
         # bbox된 이미지 데이터를 다시 카메라 프레임으로 설정
         bboxed_frame = self.image_manager.get_frame()
         
-        cv2.imshow("test",bboxed_frame)
+        cv2.imshow("test",cv2.resize(bboxed_frame,(320,240)))
         cv2.waitKey(0)
 
             #self.__video_model.set_frame2bboxed_frame(bboxed_frame)
