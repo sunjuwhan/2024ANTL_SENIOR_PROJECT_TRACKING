@@ -63,8 +63,17 @@ class class_drone_controller_display:
                                          relief=tk.SOLID)  # Box around joystick R info
         self.joystick_frame_R.pack(anchor="w", padx=8, pady=(4, 0), fill=tk.X)
 
-        self.log_text_R = tk.Text(self.info_frame, width=22, height=7, bg="#1c1c1c", fg="white", font=("Arial", 8))
-        self.log_text_R.pack(anchor="w", padx=8, pady=(4, 0))
+        self.drone_state_frame = tk.Frame(self.info_frame, bg="#404040", bd=2,
+                                          relief=tk.SOLID)  # Box around drone state
+        self.drone_state_frame.pack(anchor="w", padx=8, pady=(4, 0), fill=tk.X)
+
+        self.drone_state_title = tk.Label(self.drone_state_frame, text="Drone State", anchor="w", bg="#404040",
+                                          fg="white", font=("Arial bold", 10))
+        self.drone_state_title.pack(anchor="w")
+
+        self.drone_state_label = tk.Label(self.drone_state_frame, text="Waiting for data...", anchor="w", bg="#404040",
+                                          fg="white", font=("Arial", 8))
+        self.drone_state_label.pack(anchor="w")
 
         self.update_gps()
         self.update_switches()
@@ -129,3 +138,7 @@ class class_drone_controller_display:
 
         switch_label = tk.Label(frame, text=f"switch: {'ON' if values['switch'] else 'OFF'}", anchor="w",
                                 bg="#404040", fg="white", font=("Arial", 8))
+
+    def update_drone_state(self):
+        drone_state_text = f"Arm Data: {self.info.arm_data}"
+        self.drone_state_label.config(text=drone_state_text)

@@ -33,6 +33,7 @@ class class_drone_controller_datasender:
             self.info.arm_data=recv_data[0]
             self.info.drone_latitude=float(recv_data[1])
             self.info.drone_longitude=float(recv_data[2])
+            self.info.display.update_drone_state()
             #self.info.drone_latitude=float(1)
             #self.info.drone_longitude=float(1)
             # 기록할 데이터를 포맷팅
