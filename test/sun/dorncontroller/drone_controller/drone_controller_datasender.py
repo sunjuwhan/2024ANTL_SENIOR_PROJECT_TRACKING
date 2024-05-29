@@ -31,10 +31,15 @@ class class_drone_controller_datasender:
             recv_data=self.socket.recv(100).decode().split(' ')
             #self.info.arm_data=self.socket.recv(100).decode()  #다시 전달받아
             self.info.arm_data=recv_data[0]
-            #self.info.drone_latitude=float(recv_data[1])
-            #self.info.drone_longitude=float(recv_data[2])
-            self.info.drone_latitude=float(1)
-            self.info.drone_longitude=float(1)
+            self.info.drone_latitude=float(recv_data[1])
+            self.info.drone_longitude=float(recv_data[2])
+            #self.info.drone_latitude=float(1)
+            #self.info.drone_longitude=float(1)
+            # 기록할 데이터를 포맷팅
+            data_to_write = f"self.info.drone_latitude={self.info.drone_latitude}, self.info.drone_longitude={self.info.drone_longitude}\n"
+            # txt 파일에 기록
+            with open('drone_coordinates.txt', 'a') as file:
+                file.write(data_to_write)
 
         except Exception as e:
             print(f"Error sending joystick data: {e}")
