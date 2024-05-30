@@ -62,7 +62,6 @@ class PilotController:
                     print(" --sucesse takeoff") 
                 except Exception as e:
                     print(e)
-                    
             elif (mode=="land"):
                 try:
                     if self.flag_arm!="land":
@@ -74,7 +73,6 @@ class PilotController:
                         self.flag_arm=="land" 
                 except Exception as e:
                     print(e)
-                    
             elif( mode=="disarm" and self.__pilot_model.get_drone_state()!="init"): #맨처음 init일때는 할필요는 없고 나중에 이제 다른 모드일때 끄는거지
                 try:
                     print("--disarm land")
@@ -108,15 +106,17 @@ class PilotController:
                     print(e)
             elif(mode=="tracking") :
                 self.flag_arm="tracking"
-                if(self.__tracker_model.get_flag()) :#object deteciton했을경우
-                    pitch,yaw,throttle,roll=self.__tracker_model.get_manual_input()
-                    print("Traking Value :    ",pitch,"  ",yaw,"  ",throttle,"  ",roll)
-                    await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,roll,throttle,yaw)
-                    await asyncio.sleep(0.1)
-                else:
-                    print("Traking Value :  No Detection")
-                    await self.__drone.get_drone().manual_control.set_manual_control_input(0.0,0.0,0.5,0.0)
-                    await asyncio.sleep(0.1)
+                while True:
+                
+                    if(self.__tracker_model.get_flag()) :#object deteciton했을경우
+                        pitch,yaw,throttle,roll=self.__tracker_model.get_manual_input()
+                        print("Traking Value :    ",pitch,"  ",yaw,"  ",throttle,"  ",roll)
+                        await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,roll,throttle,yaw)
+                        await asyncio.sleep(0.1)
+                    else:
+                        print("Traking Value :  No Detection")
+                        await self.__drone.get_drone().manual_control.set_manual_control_input(0.0,0.0,0.5,0.0)
+                        await asyncio.sleep(0.1)
                     
             elif (mode=="gps") : #gps mode
                 self.flag_arm="gps"
