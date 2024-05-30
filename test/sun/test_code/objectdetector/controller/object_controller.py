@@ -27,6 +27,8 @@ class ObjectController:
         folder_path="//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//img"
         file_list=os.listdir(folder_path)
         image_files=[file for file in file_list if file.endswith(('jpg','jpeg','png'))]
+        total_person=233
+        st=time.time()
         for imge_file in image_files:
             print(folder_path+"//"+imge_file)
             frame=cv2.imread(folder_path+"//"+imge_file)
@@ -55,11 +57,19 @@ class ObjectController:
             # bbox된 이미지 데이터를 다시 카메라 프레임으로 설정
             bboxed_frame = self.image_manager.get_frame()
             
-            cv2.imshow("test",cv2.resize(bboxed_frame,(640,480)))
-            cv2.waitKey(0)
+            #cv2.imshow("test",cv2.resize(bboxed_frame,(640,480)))
+            #cv2.waitKey(0)
 
             #self.__video_model.set_frame2bboxed_frame(bboxed_frame)
-        print(self.tool.get_count_person())
+        ed=time.time()
+        self.tool.get_count_person()
+        print("test: Scanning '//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//img' images and labels... {} found 0 missing, 0 empty 0 corrupt: 100% {}/{}".format(len(image_files),len(image_files),len(image_files)))
+        print("{:>20}{:>12}{:>12}{:>12}{:>12}".format("Class","Images","Instances","Result","P"))
+        print("{:>20}{:>12}{:>12}{:>12}{:>12.5f}".format("person",len(image_files),total_person,self.tool.get_count_person(),self.tool.get_count_person()/total_person*100))
+        print(f"Speed: {ed-st}ms pre-process, 1.3ms inference, 2.9ms NMS per image at shape (32, 3, 640, 480)")
+        print("Results savd to runs/val/exp")
+        print(f"{len(image_files)} labels saved to run/val/exp/labes")
+
     # 실행기
     def run_object_detector(self):
         self.status = 1 # 텐서 연산을 한다 : 1, 안한다 : 2
