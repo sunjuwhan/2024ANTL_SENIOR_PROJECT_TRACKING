@@ -152,9 +152,15 @@ class PilotController:
                         print(e)
                         
             elif (mode=="comback"):
+                    #await self.__drone.get_drone().action.goto_location(st_latitude,st_longitude,self.__drone.flying_alt-self.__drone.real_flying_alt)
+                    #await asyncio.sleep(10)
                 try:
-                    await self.__drone.get_drone().action.goto_location(st_latitude,st_longitude,self.__drone.flying_alt-self.__drone.real_flying_alt)
-                    await asyncio.sleep(10)
+                    print("-- land")
+                    await self.__drone.get_drone().action.land()
+                    await asyncio.sleep(5)
+                    print("-- success landing")
+                    self.__pilot_model.set_drone_state("land")  #착륙이 완료되었다는 신호를 보내줘
+                    self.flag_arm=="land" 
                 except Exception as e:
                     print(e)
                 

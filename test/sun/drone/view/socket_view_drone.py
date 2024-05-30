@@ -31,8 +31,9 @@ class Socket_view_drone():
             self.__client_socket,clien_address=self.pilot_socket.accept()
             print("make_socket end")
         except Exception as e:
-            print("make_socket Error here")
-            print(e)
+            pass
+            #print("make_socket Error here")
+            #print(e)
             
             
             
@@ -42,8 +43,9 @@ class Socket_view_drone():
         try:
             self.video_receve_socket.bind((IP_DRONE,PORT_VIDEO))   #여기도 내가 영상 송수신을 위해 어떠한 type인지 받기 위한곳
         except Exception as e:
-            print("make_socket Error video")
-            print(e)
+            pass
+            #print("make_socket Error video")
+            #print(e)
             
             
     def make_socket_drone(self):
@@ -54,8 +56,9 @@ class Socket_view_drone():
             self.__client_socket,clien_address=self.pilot_socket.accept()
             print("make_socket end")
         except Exception as e:
-            print("make_socket Error drone")
-            print(e)
+            pass
+            #print("make_socket Error drone")
+            #print(e)
             
             
         
@@ -99,7 +102,8 @@ class Socket_view_drone():
                 #data 를 interface인 pilot_mode에다가 저장해주고
                 self.__pilot_mode.set_data(key_data,mode_data)   #data만 저장해주고 
             except Exception as e:
-                print(e)
+                pass
+                #print(e)
 
     def __data_recv(self):  #여기서 drone의 상태랑 등등을 어차피 다 담아서 보내니까
         while True:
@@ -125,7 +129,8 @@ class Socket_view_drone():
                 key_data=[0.0,0.0,0.0,0.0] 
                 mode_data="comback"
                 self.__pilot_mode.set_data(key_data,mode_data)
-                print(e)
+                break
+                #print(e)
                 
                 
     def run(self):
@@ -138,7 +143,8 @@ class Socket_view_drone():
             recv_thread.start()
             print("socket thread started")
         except:
-            print("socket_view thread is dead")
+            #print("socket_view thread is dead")
+            pass
             
     def run_camera(self):
         try:
@@ -150,7 +156,8 @@ class Socket_view_drone():
             recv_thread.start()
             print("socket thread started")
         except:
-            print("socket_view thread is dead")
+            #print("socket_view thread is dead")
+            pass
             
             
             

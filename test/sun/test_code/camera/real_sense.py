@@ -4,6 +4,9 @@ import pyrealsense2.pyrealsense2 as rs
 
 
 
+
+
+
 pipeline = rs.pipeline()  # intel realsense capture
 config = rs.config()  # intel realsense configuration
 
