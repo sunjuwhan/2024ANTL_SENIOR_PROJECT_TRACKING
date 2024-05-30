@@ -65,7 +65,7 @@ class ObjectController:
         self.tool.get_count_person()
         print("test: Scanning '//home//pi//2024ANTL_SENIOR_PROJECT_TRACKING//test//sun//img' images and labels... {} found 0 missing, 0 empty 0 corrupt: 100% {}/{}".format(len(image_files),len(image_files),len(image_files)))
         print("{:>20}{:>12}{:>12}{:>12}{:>12}".format("Class","Images","Instances","Result","P"))
-        print("{:>20}{:>12}{:>12}{:>12}{:>12}".format("person",len(image_files),total_person,self.tool.get_count_person,self.tool.get_count_person()/total_person))
+        print("{:>20}{:>12}{:>12}{:>12}{:>12}".format("person",len(image_files),total_person,self.tool.get_count_person(),self.tool.get_count_person()/total_person))
         print(f"Speed: {ed-st}ms pre-process, 1.3ms inference, 2.9ms NMS per image at shape (32, 3, 640, 480)")
         print("Results savd to runs/val/exp")
         print(f"{len(image_files)} labels saved to run/val/exp/labes")
