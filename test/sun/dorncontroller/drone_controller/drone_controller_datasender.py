@@ -3,7 +3,7 @@ from threading import Thread, Lock
 import socket
 import pickle
 import time
-AP_IP="192.168.32.3"
+AP_IP="192.168.32.7"
 PORT=8080
 #PORT=65433
 DRONE_IP="192.168.50.15"

@@ -1,7 +1,7 @@
 #IP_DRONE="192.168.232.138"    #자기 자신 ip주소 즉 button 값들을 받아와야하는 ip
 
 
-IP_DRONE="192.168.32.3"    #자기 자신 ip주소 즉 button 값들을 받아와야하는 ip
+IP_DRONE="192.168.32.7"    #자기 자신 ip주소 즉 button 값들을 받아와야하는 ip
 
 
 
