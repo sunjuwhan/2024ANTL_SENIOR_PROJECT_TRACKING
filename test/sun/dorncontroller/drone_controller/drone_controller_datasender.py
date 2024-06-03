@@ -3,7 +3,7 @@ from threading import Thread, Lock
 import socket
 import pickle
 import time
-import datetime
+from datetime import datetime
 AP_IP="192.168.32.7"
 PORT=8080
 #PORT=65433
