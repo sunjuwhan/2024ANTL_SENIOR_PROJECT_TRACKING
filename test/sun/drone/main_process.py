@@ -21,7 +21,7 @@ class MainCamera():
         self.__controller=controller.Master_video_controller(self.__pilot_model,self.__camera_model,self.__gps_model,self.__tracker_model)
         self.__view= view.SocketView(self.__pilot_model,self.__camera_model,self.__gps_model)
         self.__object=controller.ObjectController(self.__camera_model,self.__tracker_model)  
-    def run(self,shard_data):
+    def run(self):
         print("run object Detecter ")
         dectetor_thread=Thread(target=self.__object.run_object_detector) 
         dectetor_thread.start()
