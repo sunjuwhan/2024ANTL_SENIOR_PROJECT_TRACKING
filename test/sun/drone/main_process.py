@@ -32,14 +32,14 @@ class MainCamera():
         time.sleep(3)
         self.__view.run_camera()
         print("end camera & socket setting ")
-        shared_data['key'] =True
-        
         
     async def run_pilot(self) :
         await self.__controller.run_pilot()
-    def run_camera_main(self,shared_data):
+        
+        
+    def run_camera_main(self):
         print("camer Processe start")
-        self.run(shared_data)
+        self.run()
         
         
 class MainDrone():
@@ -59,31 +59,29 @@ class MainDrone():
         self.run()
         asyncio.run(self.run_pilot())       
 
-def run_camera(shared_data):
+def run_camera():
     main_camera=MainCamera()
-    main_camera.run_camera_main(shared_data)
+    main_camera.run_camera_main()
 
-def run_drone(shared_data):
-    while True:
-        if 'key' in shared_data:
-            break
-        
-        
+def run_drone():
+    #while True:
+        #if 'key' in shared_data:
+            #break
     main_drone=MainDrone()
     main_drone.run()
     asyncio.run(main_drone.run_pilot()) 
     
 if __name__ == "__main__":
-    with Manager() as manager:
-        shared_data=manager.dict()
-        with Pool(2) as p:
+    #with Manager() as manager:
+        #shared_data=manager.dict()
+        #with Pool(2) as p:
             
-    #p=Pool(2)
-            result_A=p.apply_async(run_camera,(shared_data,))
-            result_B=p.apply_async(run_drone,(shared_data,))
-            p.close()
-            p.join()
-    print("end Process")
+    p=Pool(2)
+    result_A=p.apply_async(run_camera, )
+    result_B=p.apply_async(run_drone,)
+    p.close()
+    p.join()
+    
     
     
 
