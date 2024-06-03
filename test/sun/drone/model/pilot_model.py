@@ -95,8 +95,8 @@ class PilotModel:
                 yaw=float(0), throttle=float(0.5), 
                 pitch=float(0), roll=float(0)
                 )
-        return 
-
+        return
+    
     def set_drone_state(self,state):
         self.__drone_state=state
         
