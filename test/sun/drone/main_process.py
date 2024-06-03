@@ -59,7 +59,7 @@ class MainDrone():
         self.run()
         asyncio.run(self.run_pilot())       
 
-def run_camera():
+def run_camera(shared_data):
     main_camera=MainCamera()
     main_camera.run_camera_main(shared_data)
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
             result_B=p.apply_async(run_drone,(shared_data,))
             p.close()
             p.join()
-    
+    print("end Process")
     
     
 
