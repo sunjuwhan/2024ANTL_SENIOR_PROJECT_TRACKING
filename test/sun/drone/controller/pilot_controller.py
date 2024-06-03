@@ -46,8 +46,9 @@ class PilotController:
                         await asyncio.sleep(3)
                         self.__pilot_model.set_drone_state("arm")
                         print("-- success Arming") 
-                        await self.__drone.get_drone().action.takeoff()
-                        await asyncio.sleep(3)
+                        #await self.__drone.get_drone().action.takeoff()
+                        #await self.__drone.get_drone().action.set_takeoff_altitude(2.0)
+                        #await asyncio.sleep(3)
                         print("success Takeoff")
                         self.flag_arm="arm"
                 except Exception as e:
@@ -56,7 +57,6 @@ class PilotController:
             elif (mode=="takeoff") :
                 try:
                     print("--  Takeoff")
-                    await self.__drone.get_drone().action.set_takeoff_altitude(3.0)
                     await self.__drone.get_drone().action.takeoff()
                     await asyncio.sleep(3)
                     print(" --sucesse takeoff") 
@@ -106,17 +106,17 @@ class PilotController:
                     await self.__drone.get_drone().manual_control.set_manual_control_input(0.0,0.0,0.5,0.0)
                     await asyncio.sleep(0.1)
                     print(e)
-            elif(mode=="tracking") :
-                self.flag_arm="tracking"
-                if(self.__tracker_model.get_flag()) :#object deteciton했을경우
-                    pitch,yaw,throttle,roll=self.__tracker_model.get_manual_input()
-                    print("Traking Value :    ",pitch,"  ",yaw,"  ",throttle,"  ",roll)
-                    await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,roll,throttle,yaw)
-                    await asyncio.sleep(0.1)
-                else:
-                    print("Traking Value :  No Detection")
-                    await self.__drone.get_drone().manual_control.set_manual_control_input(0.0,0.0,0.5,0.0)
-                    await asyncio.sleep(0.1)
+            #elif(mode=="tracking") :
+            #    self.flag_arm="tracking"
+            #    if(self.__tracker_model.get_flag()) :#object deteciton했을경우
+            #        pitch,yaw,throttle,roll=self.__tracker_model.get_manual_input()
+            #        print("Traking Value :    ",pitch,"  ",yaw,"  ",throttle,"  ",roll)
+            #        await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,roll,throttle,yaw)
+            #        await asyncio.sleep(0.1)
+            #    else:
+            #        print("Traking Value :  No Detection")
+            #        await self.__drone.get_drone().manual_control.set_manual_control_input(0.0,0.0,0.5,0.0)
+            #        await asyncio.sleep(0.1)
                     
             elif (mode=="gps") : #gps mode
                 self.flag_arm="gps"

@@ -1,4 +1,4 @@
-from multiprocessing import Pool
+from multiprocessing import Pool,Manager
 from main_camera import *
 from main import *
 import os
@@ -21,7 +21,7 @@ class MainCamera():
         self.__controller=controller.Master_video_controller(self.__pilot_model,self.__camera_model,self.__gps_model,self.__tracker_model)
         self.__view= view.SocketView(self.__pilot_model,self.__camera_model,self.__gps_model)
         self.__object=controller.ObjectController(self.__camera_model,self.__tracker_model)  
-    def run(self):
+    def run(self,shard_data):
         print("run object Detecter ")
         dectetor_thread=Thread(target=self.__object.run_object_detector) 
         dectetor_thread.start()
@@ -32,12 +32,14 @@ class MainCamera():
         time.sleep(3)
         self.__view.run_camera()
         print("end camera & socket setting ")
+        shared_data['key'] =True
+        
         
     async def run_pilot(self) :
         await self.__controller.run_pilot()
-    def run_camera_main(self):
+    def run_camera_main(self,shared_data):
         print("camer Processe start")
-        self.run()
+        self.run(shared_data)
         
         
 class MainDrone():
@@ -59,19 +61,28 @@ class MainDrone():
 
 def run_camera():
     main_camera=MainCamera()
-    main_camera.run_camera_main()
+    main_camera.run_camera_main(shared_data)
 
-def run_drone():
+def run_drone(shared_data):
+    while True:
+        if 'key' in shared_data:
+            break
+        
+        
     main_drone=MainDrone()
     main_drone.run()
     asyncio.run(main_drone.run_pilot()) 
     
 if __name__ == "__main__":
-    p=Pool(2)
-    result_A=p.apply_async(run_camera,)
-    result_B=p.apply_async(run_drone,)
-    p.close()
-    p.join()
+    with Manager() as manager:
+        shared_data=manager.dict()
+        with Pool(2) as p:
+            
+    #p=Pool(2)
+            result_A=p.apply_async(run_camera,(shared_data,))
+            result_B=p.apply_async(run_drone,(shared_data,))
+            p.close()
+            p.join()
     
     
     
