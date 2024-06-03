@@ -3,6 +3,7 @@ from threading import Thread, Lock
 import socket
 import pickle
 import time
+import datetime
 AP_IP="192.168.32.7"
 PORT=8080
 #PORT=65433
@@ -13,6 +14,9 @@ class class_drone_controller_datasender:
         self.info = info
         self.target_ip = AP_IP# 드론 IP 주소   ap 192.168.32.3    drone 192.168.50.63
         self.target_port = PORT# port
+        self.__gps_txt_open=False
+        self.__file=None
+        self.mode=None
         while True:
             try:
                 self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -36,12 +40,25 @@ class class_drone_controller_datasender:
             self.info.display.update_drone_state()
             #self.info.drone_latitude=float(1)
             #self.info.drone_longitude=float(1)
+            #현재 날짜와 시간 가져와서 
+            
+            current_datetime = datetime.now()
+            formatted_datetime = current_datetime.strftime('%Y:%m:%d %H:%M')
             # 기록할 데이터를 포맷팅
-            data_to_write = f"self.info.drone_latitude={self.info.drone_latitude}, self.info.drone_longitude={self.info.drone_longitude}\n"
+            data_to_write = f"{formatted_datetime} : latitude={self.info.drone_latitude}, longitude={self.info.drone_longitude}\n"
+           
             # txt 파일에 기록
-            with open('drone_coordinates.txt', 'a') as file:
-                file.write(data_to_write)
-
+            if self.__gps_txt_open==False and self.info.now_mode=="gps": #gps모드인데 txt가 닫혀있으면? 열어야지
+                self.__file=open('drone_cordinates.txt','a',encoding='utf-8')  #파일 열어주고
+                self.__file.write(data_to_write)
+                self.__gps_txt_open=True
+            elif self.__gps_txt_open==True and self.info.now_mode=="gps":  #gps 모드인데 txt가 열려있으면? 써줘야지
+                self.__file.write(data_to_write)
+            elif self.__gps_txt_open==True and self.info.now_mode!='gps' : #만약에 gps가 끝났는데 txt가 열려있으면 문닫아줘
+                self.__file.close()
+                self.__gps_txt_open=False
+               
+                
         except Exception as e:
             print(f"Error sending joystick data: {e}")
 
